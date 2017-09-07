@@ -1,0 +1,21 @@
+node {
+   stage('checkout') {
+       sh 'sudo rm -rf *'
+    git credentialsId: 'wmcred', url: 'https://github.wm.com/ebiz/rolloff-request.git', branch: 'master'
+}
+
+   stage('BuildAndPush') {
+       sh 'sudo rm -rf *'
+        git credentialsId: 'ramgitcred', url: 'https://github.com/ramana10/ecs.git', branch: 'master'
+       sh 'sudo chmod +x pipescript'
+       sh './pipescript'
+}
+   stage('Approval'){
+       input 'Are you sure?'
+       input message: 'Are you sure?', ok: 'Deploy', submitter: 'admin'
+   }
+   stage('Deploy'){
+       sh 'echo Deployed'
+   }
+
+}
