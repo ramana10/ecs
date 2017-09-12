@@ -10,7 +10,7 @@ then
 
 else
    echo "There are some images prsent"
-   sudo docker rmi -f $(docker images -q)
+   #sudo docker rmi -f $(docker images -q)
 fi
 
 
