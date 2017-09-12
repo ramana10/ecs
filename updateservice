@@ -1,0 +1,3 @@
+echo $This Job depoys to production
+#sudo aws ecs update-service --cluster DevCluster --service DevService --task-definition webserver:${revsionnumber} --profile ramanaAccount
+sudo aws ecs update-service --cluster wmcanada-dev-cluster --service wmcanada-rolloff-request-dev-service --task-definition wmcanada-rolloff-request-dev-task:${revsionnumber} --region us-east-1
