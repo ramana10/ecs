@@ -31,4 +31,5 @@ sudo cp taskDefTemplate .
 sed  -i -e 's#"image".*,#"image": "'${repoName}:${tagName}'",#g' taskDefTemplate
 sudo aws ecs register-task-definition --cli-input-json file://taskDefTemplate  --region us-east-1 > forrevision
 revsionnumber=`cat forrevision | grep "revision" | awk '{print $2}'`
+echo revsionnumber=$revsionnumber > revisionnumber
 
